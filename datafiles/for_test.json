@@ -1,6 +1,6 @@
 [{
     "id": 873106923,
-    "state": "EXECUTED",
+    "state": "",
     "date": "2019-03-23T01:09:46.296404",
     "operationAmount": {
       "amount": "43318.34",
@@ -15,7 +15,7 @@
   },
   {
     "id": 214024827,
-    "state": "EXECUTED",
+    "state": "",
     "date": "2018-12-20T16:43:26.929246",
     "operationAmount": {
       "amount": "70946.18",
