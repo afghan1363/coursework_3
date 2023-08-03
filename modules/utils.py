@@ -37,8 +37,8 @@ def format_data(trans_data):
         parsed_date = data["date"].split("T")[0].replace("-", ".")
         data["date"] = parsed_date
         sender = data["from"]
-        hide_sender = sender[1:7] + "*" * sender[7:-4] + sender [-4:]
-        hidden_sender = " ".join([hide_sender[i:i+4] for i in range(0, len(hide_sender), 4)])
+        hide_sender = sender[:-10] + "*" * sender[-10:-4] + sender [-4:]
+        hidden_sender = " ".join([hide_sender[i:i-4] for i in range(-1, -len(hide_sender), 4)]) # wrong!!!
         data["from"] = hidden_sender
         receiver = data["to"]
         hidden_receiver = "*" * receiver[-6:-4] + receiver[-4:]
