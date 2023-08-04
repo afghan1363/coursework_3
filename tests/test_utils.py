@@ -23,7 +23,5 @@ def test_load_trans_data():
     }]
 
 
-def test_format_data():
-    assert utils.format_data([{"date": "2019-07-12T20:41:47.882230", "from": "Счет 48894435694657014368",
-                              "to": "Счет 38976430693692818358"}]) == [{"date": "12.07.2019", "from": "Счет 4889 44** **** 4368",
-                              "to": "Счет **8358"}]
+def test_format_card_number():
+    assert utils.format_card_number("Visa Platinum 2256483756542539") == "Visa Platinum 2256 48** **** 2539"
