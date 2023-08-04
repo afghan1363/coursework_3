@@ -27,8 +27,14 @@ def test_format_card_number():
     assert utils.format_card_number("Visa Platinum 2256483756542539") == "Visa Platinum 2256 48** **** 2539"
     assert utils.format_card_number("Visa Gold 2256483756542539") == "Visa Gold 2256 48** **** 2539"
 
+
 def test_format_account_number():
     assert utils.format_account_number("Счет 48894435694657014368") == "Счет **4368"
+
+
+def test_format_date():
+    assert utils.format_date("2019-07-12T20:41:47.882230") == "12.07.2019"
+
 
 def test_format_data():
     assert utils.format_data({
