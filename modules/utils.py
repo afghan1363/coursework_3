@@ -11,7 +11,7 @@ def load_trans_data(path):
         trans_data = json.load(json_data)
         executed_transactions = []
         for data in trans_data:
-            if data["state"] == "EXECUTED":
+            if data.get("state") == "EXECUTED":
                 executed_transactions.append(data)
     return executed_transactions
 
