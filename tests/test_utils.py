@@ -18,8 +18,7 @@ def test_load_trans_data():
             }
         },
         "description": "Перевод организации",
-        "from": "Счет 48894435694657014368",
-        "to": "Счет 38976430693692818358"
+        "to": "Visa Test 3897643069369281"
     }]
 
 
@@ -92,4 +91,31 @@ def test_format_data():
         },
         "description": "Перевод организации",
         "to": "Счет **8358"
+    }]
+    assert utils.format_data([{
+        "id": 522357576,
+        "state": "EXECUTED",
+        "date": "2019-07-12T20:41:47.882230",
+        "operationAmount": {
+            "amount": "51463.70",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "to": "Visa Test 3897643069369281"
+    }]) == [{
+        "id": 522357576,
+        "state": "EXECUTED",
+        "date": "12.07.2019",
+        "operationAmount": {
+            "amount": "51463.70",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "to": "Visa Test 3897 64** **** 9281"
     }]
