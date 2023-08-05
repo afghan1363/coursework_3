@@ -12,8 +12,6 @@ def load_trans_data(path):
         executed_transactions = []
         for data in trans_data:
             if data["state"] == "EXECUTED":
-                # parsed_date = data["date"].split("T")[0].replace("-", ".")
-                # data["date"] = parsed_date
                 executed_transactions.append(data)
     return executed_transactions
 
@@ -54,9 +52,18 @@ def format_data(trans_data):
         :param key: is given in function sort()
         :return: data in given key
         """
-        return key["data"]
+        return key["date"]
 
     trans_data.sort(key=key_to_sort, reverse=True)
     for data in trans_data:
-        parsed_date = data["date"].split("T")[0].replace("-", ".")
-        data["date"] = parsed_date
+        data["date"] = format_date(data["date"])
+        if "from" in data:
+            if "Счет" in data["from"]:
+                data["from"] = format_account_number(data["from"])
+            else:
+                data["from"] = format_card_number(data["from"])
+        if "Счет" in data["to"]:
+            data["to"] = format_account_number(data["to"])
+        else:
+            data["to"] = format_card_number(data["to"])
+    return trans_data
