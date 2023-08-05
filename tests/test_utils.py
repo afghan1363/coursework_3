@@ -37,7 +37,7 @@ def test_format_date():
 
 
 def test_format_data():
-    assert utils.format_data({
+    assert utils.format_data([{
         "id": 522357576,
         "state": "EXECUTED",
         "date": "2019-07-12T20:41:47.882230",
@@ -49,9 +49,9 @@ def test_format_data():
             }
         },
         "description": "Перевод организации",
-        "from": "Visa Gold 225648375654253",
+        "from": "Visa Gold 2256483756542539",
         "to": "Счет 38976430693692818358"
-    }) == {{
+    }]) == [{
         "id": 522357576,
         "state": "EXECUTED",
         "date": "12.07.2019",
@@ -64,5 +64,32 @@ def test_format_data():
         },
         "description": "Перевод организации",
         "from": "Visa Gold 2256 48** **** 2539",
-        "to": "Счет **4368"
-    }}
+        "to": "Счет **8358"
+    }]
+    assert utils.format_data([{
+        "id": 522357576,
+        "state": "EXECUTED",
+        "date": "2019-07-12T20:41:47.882230",
+        "operationAmount": {
+            "amount": "51463.70",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "to": "Счет 38976430693692818358"
+    }]) == [{
+        "id": 522357576,
+        "state": "EXECUTED",
+        "date": "12.07.2019",
+        "operationAmount": {
+            "amount": "51463.70",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "to": "Счет **8358"
+    }]
