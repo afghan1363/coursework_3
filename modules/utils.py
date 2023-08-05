@@ -17,12 +17,22 @@ def load_trans_data(path):
 
 
 def format_date(date):
+    """
+    Formats date from Y-m-d to d.m.Y
+    :param date: YYYY-mm-ddTh:m:s
+    :return: formatted date
+    """
     date_ext = date.split("T")[0]
-    date_formated = ".".join(date_ext.split("-")[::-1])
-    return date_formated
+    date_formatted = ".".join(date_ext.split("-")[::-1])
+    return date_formatted
 
 
 def format_card_number(card):
+    """
+    Hides a card number
+    :param card: Number with description
+    :return: Hidden number
+    """
     format_card = card.split(" ")
     card_list = list(format_card[-1])
     card_list[6:12] = "*" * len(card[6:12])
@@ -33,6 +43,11 @@ def format_card_number(card):
 
 
 def format_account_number(account):
+    """
+    Hides an account number
+    :param account: Account with description
+    :return: Hidden number
+    """
     account_list = account.split(" ")
     account_list[-1] = "*" * 2 + account_list[-1][-4:]
     hidden_account = " ".join(account_list)
